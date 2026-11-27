@@ -1388,3 +1388,9 @@ vendor/lib64/libqshcamera.so
 vendor/lib64/libsynx.so
 vendor/lib64/vendor.qti.hardware.camera.postproc-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
+
+# Mist Phase 4E remaining stock runtime dependencies
+vendor/bin/init.qti.cam.perfopt.sh
+vendor/lib64/libc++_shared.so
+vendor/lib64/libhdr10plus.so
+vendor/lib64/libqti_vndfwk_detect.so
