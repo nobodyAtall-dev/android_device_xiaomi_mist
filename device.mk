@@ -173,3 +173,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
 $(call inherit-product, vendor/xiaomi/mist/mist-vendor.mk)
+
+# Mist boot initialization
+PRODUCT_PACKAGES += init.mist.rc init.mist.recovery.rc system_dlkm_modprobe.sh

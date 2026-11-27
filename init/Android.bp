@@ -11,3 +11,23 @@ prebuilt_etc {
     vendor_ramdisk: true,
     relative_install_path: "first_stage_ramdisk",
 }
+
+prebuilt_etc {
+    name: "init.mist.rc",
+    src: "init.mist.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mist.recovery.rc",
+    src: "init.mist.recovery.rc",
+    sub_dir: "init",
+    recovery: true,
+}
+
+sh_binary {
+    name: "system_dlkm_modprobe.sh",
+    src: "system_dlkm_modprobe.sh",
+    vendor: true,
+}

@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: Apache-2.0
+# Mist firmware mount aliases and hardware service data directories.
+on early-init
+    symlink /vendor/firmware_mnt /firmware
+    symlink /vendor/bt_firmware /bt_firmware
+    symlink /vendor/dsp /dsp
+
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    mount_all /vendor/etc/fstab.qcom --early
+
+on late-fs
+    mount_all /vendor/etc/fstab.qcom --late
+
+on post-fs-data
+    mkdir /data/vendor/audio 0770 audio audio
+    mkdir /data/vendor/audio/acdbdata 0770 media audio
+    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
+    mkdir /data/vendor/camera 0770 camera camera
+    mkdir /data/vendor/display 0770 system graphics
+    mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
+    mkdir /data/vendor/wifi 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+    mkdir /data/vendor/wifi/hostapd 0770 wifi wifi
+    mkdir /data/vendor/wifi/hostapd/ctrl 0770 wifi wifi
+    mkdir /data/vendor/radio 0770 system radio
+    mkdir /data/vendor/time 0700 system system
+    mkdir /data/vendor/connectivity 0771 radio radio
+    mkdir /data/vendor/media 0770 mediacodec media
+    mkdir /data/vendor/tzstorage 0770 system system
