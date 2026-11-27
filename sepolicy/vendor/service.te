@@ -1,2 +1,0 @@
-# Mist vendor AIDL camera postprocessing service.
-type vendor_mist_camera_postproc_service, protected_service, hal_service_type, service_manager_type;
