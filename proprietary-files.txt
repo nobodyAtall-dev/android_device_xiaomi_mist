@@ -1025,3 +1025,10 @@ vendor/etc/vintf/manifest/fingerprint-odm.xml
 vendor/lib64/hw/fingerprint.goodix_fod.so
 vendor/lib64/hw/fingerprint.jiiov.so
 vendor/lib64/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so
+
+# Mist boot and sensor dependencies
+vendor/bin/init.kernel.init_boot-memory.sh
+vendor/bin/init.kernel.post_boot-memory.sh
+vendor/bin/start_subsys.sh
+vendor/bin/init.kernel.post_boot.sh
+vendor/lib64/sensors.touch.detect.so

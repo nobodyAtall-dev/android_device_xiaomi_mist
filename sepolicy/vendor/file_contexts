@@ -19,3 +19,7 @@
 # Mist fingerprint device and state
 /dev/xiaomi-fp u:object_r:vendor_fingerprint_device:s0
 /data/vendor/(fpdata|fpdump|fingerprint)(/.*)? u:object_r:vendor_fingerprint_data_file:s0
+
+# Persistent fingerprint calibration
+/mnt/vendor/persist/(fingerprint|fpc|goodix)(/.*)? u:object_r:vendor_mist_fp_persist_file:s0
+/dev/socket/fpsensor_socket u:object_r:vendor_mist_fp_socket:s0

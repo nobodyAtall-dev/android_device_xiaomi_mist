@@ -29,3 +29,8 @@ allow hal_fingerprint_default self:netlink_socket create_socket_perms_no_ioctl;
 
 # Mist fingerprint service uses a named local socket and scheduling priority.
 allow hal_fingerprint_default self:unix_stream_socket create_stream_socket_perms;
+
+allow hal_fingerprint_default vendor_mist_fp_persist_file:dir create_dir_perms;
+allow hal_fingerprint_default vendor_mist_fp_persist_file:file create_file_perms;
+allow hal_fingerprint_default vendor_mist_fp_socket:sock_file rw_file_perms;
+allow hal_fingerprint_default self:capability sys_nice;
