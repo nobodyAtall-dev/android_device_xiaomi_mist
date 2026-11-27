@@ -1,0 +1,13 @@
+// SPDX-License-Identifier: Apache-2.0
+prebuilt_etc {
+    name: "fstab.qcom",
+    src: "fstab.qcom",
+    vendor: true,
+}
+prebuilt_etc {
+    name: "fstab.qcom.vendor_ramdisk",
+    src: "fstab.qcom",
+    filename: "fstab.qcom",
+    vendor_ramdisk: true,
+    relative_install_path: "first_stage_ramdisk",
+}
