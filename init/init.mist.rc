@@ -93,3 +93,16 @@ on property:init.svc.vendor.per_mgr=running
 on property:sys.shutdown.requested=*
     write /sys/kernel/qcom_rproc/shutdown_in_progress 1
     stop vendor.per_proxy
+
+# Match stock boot service coordination and donor hardware access.
+on boot
+    chown system system /sys/class/backlight/panel0-backlight/brightness
+    chown system system /sys/class/backlight/panel0-backlight/max_brightness
+    mkdir /dev/socket/qmux_radio 0770 radio radio
+    chmod 2770 /dev/socket/qmux_radio
+    mkdir /mnt/vendor/persist/sensors 0770 system system
+    mkdir /mnt/vendor/persist/display 0770 system graphics
+
+on property:sys.boot_completed=1
+    chown system system /sys/class/qcom-battery/input_suspend
+    chmod 0660 /sys/class/qcom-battery/input_suspend

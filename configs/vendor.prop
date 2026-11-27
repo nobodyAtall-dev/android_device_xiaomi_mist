@@ -22,3 +22,6 @@ persist.bluetooth.a2dp_offload.disabled=true
 # Audio HAL
 ro.audio.ihaladaptervendorextension_enabled=true
 vendor.audio.hal.boot.timeout.ms=20000
+
+# Stock runtime selects the non-SPU Gatekeeper service.
+vendor.gatekeeper.is_security_level_spu=0
