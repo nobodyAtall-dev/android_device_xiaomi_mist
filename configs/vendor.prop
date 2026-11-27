@@ -1,0 +1,24 @@
+# Qualcomm graphics and media
+ro.hardware.egl=adreno
+ro.hardware.vulkan=adreno
+ro.opengles.version=196610
+media.c2.hal.selection=aidl
+debug.c2.use_dmabufheaps=1
+
+# Qualcomm radio and USB
+persist.radio.multisim.config=dsds
+telephony.active_modems.max_count=2
+vendor.usb.controller=a600000.dwc3
+vendor.usb.use_ffs_mtp=1
+vendor.usb.use_gadget_hal=1
+
+# Qualcomm WLAN
+ro.hardware.wlan.vendor=qcom
+
+# Software Bluetooth audio path
+ro.bluetooth.a2dp_offload.supported=false
+persist.bluetooth.a2dp_offload.disabled=true
+
+# Audio HAL
+ro.audio.ihaladaptervendorextension_enabled=true
+vendor.audio.hal.boot.timeout.ms=20000
