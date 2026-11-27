@@ -73,6 +73,12 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dl
 BOARD_SYSTEM_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/system_dlkm/*.ko)
 BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/system_dlkm/modules.load))
 
+# Recovery-only module set: retain the stock recovery load order and append
+# Mist touch framework and controller variants. Do not change normal boot.
+MIST_RECOVERY_TOUCH_MODULES := qts.ko lct_tp.ko xiaomi_tp.ko ft3683g_spi.ko gt9916k_spi.ko goodix_ts.ko focaltech_fts.ko nt36xxx-i2c.ko
+BOARD_RECOVERY_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES) $(addprefix $(KERNEL_PATH)/vendor_dlkm/,$(MIST_RECOVERY_TOUCH_MODULES))
+BOARD_RECOVERY_KERNEL_MODULES_LOAD := $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD) $(MIST_RECOVERY_TOUCH_MODULES)
+
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/init/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
