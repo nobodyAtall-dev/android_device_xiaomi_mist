@@ -18,6 +18,8 @@ module = ExtractUtilsModule(
         'vendor/qcom/opensource/dataservices',
     ],
     blob_fixups={
+        'vendor/lib64/libmifpext_fod.so': blob_fixup()
+            .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
         # These legacy memory services reference scripts absent in Mist stock.
         'vendor/etc/init/hw/init.qti.kernel.rc': blob_fixup()
             .regex_replace(r'(?m)^service memory-(?:init|post)-boot[^\n]*\n(?:[ \t]+[^\n]*\n)*', '')
