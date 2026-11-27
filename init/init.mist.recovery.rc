@@ -45,4 +45,6 @@ on fs
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro context=u:object_r:firmware_file:s0
 
 on property:dev.mnt.blk.firmware=*
+    write /sys/module/firmware_class/parameters/path /firmware/image
+    wait /sys/kernel/boot_adsp/boot 5
     write /sys/kernel/boot_adsp/boot 1
