@@ -157,4 +157,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += vendor_bt_firmware_mountpoint vendor_dsp_mountpoint vendor_firmware_mnt_mountpoint
 
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/usb/etc
+# Boot control and OTA
+PRODUCT_PACKAGES += android.hardware.boot-service.qti android.hardware.boot-service.qti.recovery checkpoint_gc otapreopt_script
+AB_OTA_POSTINSTALL_CONFIG += RUN_POSTINSTALL_system=true POSTINSTALL_PATH_system=system/bin/otapreopt_script FILESYSTEM_TYPE_system=ext4 POSTINSTALL_OPTIONAL_system=true
+AB_OTA_POSTINSTALL_CONFIG += RUN_POSTINSTALL_vendor=true POSTINSTALL_PATH_vendor=bin/checkpoint_gc FILESYSTEM_TYPE_vendor=erofs POSTINSTALL_OPTIONAL_vendor=true
+
+# Audio policy support files; retain Mist stock mixer and resource-manager files.
+PRODUCT_COPY_FILES += \
+    hardware/qcom-caf/sm8450-6.6/audio/primary-hal/configs/parrot/audio_effects_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_config.xml \
+    hardware/qcom-caf/sm8450-6.6/audio/primary-hal/configs/parrot/card-defs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/card-defs.xml \
+    hardware/qcom-caf/sm8450-6.6/audio/primary-hal/configs/parrot/microphone_characteristics.xml:$(TARGET_COPY_OUT_VENDOR)/etc/microphone_characteristics.xml \
+    hardware/qcom-caf/sm8450-6.6/audio/primary-hal/configs/parrot/vendor_audio_interfaces.xml:$(TARGET_COPY_OUT_VENDOR)/etc/vendor_audio_interfaces.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
+
 $(call inherit-product, vendor/xiaomi/mist/mist-vendor.mk)
