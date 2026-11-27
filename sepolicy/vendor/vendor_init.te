@@ -1,1 +1,3 @@
 set_prop(vendor_init, vendor_marketname_prop)
+
+set_prop(vendor_init, vendor_mist_boot_prop)

@@ -9,3 +9,6 @@ vendor_internal_prop(vendor_fp_prop)
 
 # Market name
 vendor_public_prop(vendor_marketname_prop)
+
+# Normal boot DSP coordination, nonpersistent.
+vendor_internal_prop(vendor_mist_boot_prop)

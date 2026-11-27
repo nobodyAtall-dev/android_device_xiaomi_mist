@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Mist firmware mount aliases and hardware service data directories.
 on early-init
+    setprop vendor.mist.dsp_requested 0
     write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
     exec_start gki.modprobe
     start vendor.modprobe
@@ -66,7 +67,18 @@ service vendor.modprobe /vendor/bin/vendor_modprobe.sh
 
 # Firmware partitions are mounted during fs. Start DSPs after the module
 # loader exits, rather than blocking init indefinitely on a failed loader.
-on early-boot && property:vendor.all.modules.ready=1
+# Event path handles readiness before boot; property path handles late readiness.
+on early-boot
+    setprop vendor.mist.normal_boot_ready 1
+
+on early-boot && property:vendor.all.modules.ready=1 && property:vendor.mist.dsp_requested=0
+    trigger mist-start-dsp
+
+on property:vendor.mist.normal_boot_ready=1 && property:vendor.all.modules.ready=1 && property:vendor.mist.dsp_requested=0
+    trigger mist-start-dsp
+
+on mist-start-dsp && property:vendor.mist.dsp_requested=0
+    setprop vendor.mist.dsp_requested 1
     exec_background u:r:vendor_qti_init_shell_bg:s0 -- /vendor/bin/init.qti.write.sh /sys/kernel/boot_adsp/boot 1
     exec_background u:r:vendor_qti_init_shell_bg:s0 -- /vendor/bin/init.qti.write.sh /sys/kernel/boot_cdsp/boot 1
 
