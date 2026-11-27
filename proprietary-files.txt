@@ -1035,3 +1035,10 @@ vendor/lib64/libmifpext_fod.so
 vendor/lib64/libgf_hal.so
 vendor/lib64/vendor.xiaomi.hardware.fx.tunnel-V1-ndk.so
 vendor/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk.so
+
+# Mist stock hardware configuration and fingerprint
+vendor/firmware/focaltech_ts_fw_sanxing.bin
+vendor/firmware/focaltech_ts_fw_sanxing1.bin
+vendor/firmware/focaltech_ts_fw_sanxing2.bin
+vendor/firmware/focaltech_ts_fw_sanxing3.bin
+vendor/firmware/focaltech_ts_fw_sanxing4.bin

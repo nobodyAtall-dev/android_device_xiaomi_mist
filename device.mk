@@ -173,3 +173,10 @@ $(call inherit-product, vendor/xiaomi/mist/mist-vendor.mk)
 
 # Mist boot initialization
 PRODUCT_PACKAGES += init.mist.rc init.mist.recovery.rc system_dlkm_modprobe.sh
+
+# Mist touchscreen firmware in recovery ramdisk
+PRODUCT_COPY_FILES += vendor/xiaomi/mist/proprietary/vendor/firmware/focaltech_ts_fw_sanxing.bin:recovery/root/lib/firmware/focaltech_ts_fw_sanxing.bin
+PRODUCT_COPY_FILES += vendor/xiaomi/mist/proprietary/vendor/firmware/focaltech_ts_fw_sanxing1.bin:recovery/root/lib/firmware/focaltech_ts_fw_sanxing1.bin
+PRODUCT_COPY_FILES += vendor/xiaomi/mist/proprietary/vendor/firmware/focaltech_ts_fw_sanxing2.bin:recovery/root/lib/firmware/focaltech_ts_fw_sanxing2.bin
+PRODUCT_COPY_FILES += vendor/xiaomi/mist/proprietary/vendor/firmware/focaltech_ts_fw_sanxing3.bin:recovery/root/lib/firmware/focaltech_ts_fw_sanxing3.bin
+PRODUCT_COPY_FILES += vendor/xiaomi/mist/proprietary/vendor/firmware/focaltech_ts_fw_sanxing4.bin:recovery/root/lib/firmware/focaltech_ts_fw_sanxing4.bin
