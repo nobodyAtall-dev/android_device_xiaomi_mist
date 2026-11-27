@@ -2,3 +2,18 @@
 soong_namespace {
     imports: ["hardware/xiaomi"],
 }
+
+// Stock Mist WLAN firmware aliases (HyperOS 4 Phase 4B).
+install_symlink {
+    name: "mist_wlanmdsp_otaupdate_symlink",
+    vendor: true,
+    installed_location: "firmware/wlanmdsp.otaupdate",
+    symlink_target: "/data/vendor/firmware/wlanmdsp.mbn",
+}
+
+install_symlink {
+    name: "mist_wcnss_config_symlink",
+    vendor: true,
+    installed_location: "firmware/wlan/qca_cld/adrastea/WCNSS_qcom_cfg.ini",
+    symlink_target: "/vendor/etc/wifi/adrastea/WCNSS_qcom_cfg.ini",
+}
