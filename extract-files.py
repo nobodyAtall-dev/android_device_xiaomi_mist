@@ -18,6 +18,10 @@ module = ExtractUtilsModule(
         'vendor/qcom/opensource/dataservices',
     ],
     blob_fixups={
+        # These legacy memory services reference scripts absent in Mist stock.
+        'vendor/etc/init/hw/init.qti.kernel.rc': blob_fixup()
+            .regex_replace(r'(?m)^service memory-(?:init|post)-boot[^\n]*\n(?:[ \t]+[^\n]*\n)*', '')
+            .regex_replace(r'(?m)^[ \t]+start memory-(?:init|post)-boot\n', ''),
         'vendor/lib64/android.hardware.bluetooth.audio-impl_prebuilt.so': blob_fixup()
             .replace_needed('libbluetooth_audio_session_aidl.so', 'libbluetooth_audio_session_aidl_prebuilt.so'),
         'vendor/lib64/libaudioserviceexampleimpl.so': blob_fixup()
