@@ -26,3 +26,6 @@
 
 # GKI loader uses the existing Qualcomm module-install domain.
 /vendor/bin/system_dlkm_modprobe\.sh u:object_r:vendor_modinstall-sh_exec:s0
+
+# Mist stock AIDL camera provider
+/vendor/bin/hw/vendor\.qti\.camera\.provider-service_64 u:object_r:hal_camera_default_exec:s0
