@@ -156,6 +156,9 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+# Stock Mist WLAN firmware aliases.
+PRODUCT_PACKAGES += mist_wlanmdsp_otaupdate_symlink mist_wcnss_config_symlink
+
 # Firmware mount points
 PRODUCT_PACKAGES += vendor_bt_firmware_mountpoint vendor_dsp_mountpoint vendor_firmware_mnt_mountpoint
 
