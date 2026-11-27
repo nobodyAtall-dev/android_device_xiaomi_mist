@@ -1386,7 +1386,6 @@ vendor/lib64/libopencv.so
 vendor/lib64/libopencv3a.so
 vendor/lib64/libqshcamera.so
 vendor/lib64/libsynx.so
-vendor/lib64/vendor.qti.hardware.camera.postproc-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 
 # Mist Phase 4E remaining stock runtime dependencies
