@@ -3,3 +3,6 @@ vendor.qti.hardware.radio.qcriNvOpt.IqcriNvOpt/qcrinvopt1    u:object_r:vendor_h
 
 # Mist stock AIDL camera provider
 android.hardware.camera.provider.ICameraProvider/vendor_qti/0 u:object_r:hal_camera_service:s0
+
+# Stock AIDL camera postprocessing instance; separate from HIDL hwservice.
+vendor.qti.hardware.camera.postproc.IPostProcService/camerapostprocservice u:object_r:vendor_mist_camera_postproc_service:s0
