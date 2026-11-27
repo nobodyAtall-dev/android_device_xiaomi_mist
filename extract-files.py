@@ -18,6 +18,32 @@ module = ExtractUtilsModule(
         'vendor/qcom/opensource/dataservices',
     ],
     blob_fixups={
+        'vendor/lib64/libaodoptfeature.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/libapengine.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/libcamerapoweroptfeature.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/libgamepoweroptfeature.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/liboffscreenpoweroptfeature.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/libpsmoptfeature.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/libqcodec2_core.so': blob_fixup()
+            .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
+        'vendor/lib64/libqcodec2_utils.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/libqti-perfd.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/libvideooptfeature.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/libwfddisplayconfig_vendor.so': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
+        'vendor/lib64/libwfdmmsrc_proprietary.so': blob_fixup()
+            .replace_needed('android.media.audio.common.types-V2-ndk.so', 'android.media.audio.common.types-V3-ndk.so'),
+        'vendor/bin/qguard': blob_fixup()
+            .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
         'vendor/lib64/libmifpext_fod.so': blob_fixup()
             .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
         # These legacy memory services reference scripts absent in Mist stock.
