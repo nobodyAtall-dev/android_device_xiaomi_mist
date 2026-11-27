@@ -87,6 +87,12 @@ PRODUCT_PACKAGES += \
 # HWUI
 TARGET_USES_VULKAN := true
 
+# Codec2 audio configuration and matching service seccomp policies.
+PRODUCT_COPY_FILES += \
+    hardware/qcom-caf/sm8450-6.6/audio/primary-hal/configs/common/codec2/media_codecs_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2_audio.xml \
+    hardware/qcom-caf/sm8450-6.6/audio/primary-hal/configs/common/codec2/service/1.0/c2audio.vendor.base-arm64.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/c2audio.vendor.base-arm64.policy \
+    hardware/qcom-caf/sm8450-6.6/audio/primary-hal/configs/common/codec2/service/1.0/c2audio.vendor.ext-arm64.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy
+
 # Memtrack
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
