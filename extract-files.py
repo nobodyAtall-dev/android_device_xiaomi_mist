@@ -18,6 +18,12 @@ module = ExtractUtilsModule(
         'vendor/qcom/opensource/dataservices',
     ],
     blob_fixups={
+        'vendor/lib64/android.hardware.bluetooth.audio-impl_prebuilt.so': blob_fixup()
+            .replace_needed('libbluetooth_audio_session_aidl.so', 'libbluetooth_audio_session_aidl_prebuilt.so'),
+        'vendor/lib64/libaudioserviceexampleimpl.so': blob_fixup()
+            .replace_needed('android.hardware.bluetooth.audio-impl.so', 'android.hardware.bluetooth.audio-impl_prebuilt.so')
+            .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so')
+            .replace_needed('libbluetooth_audio_session_aidl.so', 'libbluetooth_audio_session_aidl_prebuilt.so'),
         'vendor/etc/init/fingerprint-odm.rc': blob_fixup()
             .regex_replace(r'IFingerprint/virtual', 'IFingerprint/default'),
     },
