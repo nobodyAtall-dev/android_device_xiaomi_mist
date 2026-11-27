@@ -2,5 +2,5 @@ allow hal_camera_default mnt_vendor_file:dir search;
 allow hal_camera_default camera_persist_file:dir search;
 r_dir_file(hal_camera_default, camera_persist_file)
 
-# Only the camera provider registers its stock postprocessing service.
-add_service(hal_camera_default, vendor_mist_camera_postproc_service)
+# Associate the stock postprocessing AIDL service with the camera HAL.
+hal_attribute_service(hal_camera, vendor_mist_camera_postproc_service)
