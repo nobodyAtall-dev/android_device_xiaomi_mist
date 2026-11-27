@@ -6,7 +6,7 @@
 /data/vendor/thermal(/.*)?                      u:object_r:mi_thermald_data_file:s0
 
 # Fingerprint
-/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.xiaomi    u:object_r:hal_fingerprint_default_exec:s0
+/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.(xiaomi|odm)    u:object_r:hal_fingerprint_default_exec:s0
 /dev/goodix_fp                                  u:object_r:vendor_fingerprint_device:s0
 /dev/silead_fp                                  u:object_r:vendor_fingerprint_device:s0
 /data/vendor/fpc(/.*)?                          u:object_r:vendor_fingerprint_data_file:s0
@@ -15,3 +15,7 @@
 
 # Gralloc (HIDL, for CamX)
 /vendor/bin/hw/vendor\.qti\.hardware\.display\.allocator@4\.0-service    u:object_r:hal_graphics_allocator_default_exec:s0
+
+# Mist fingerprint device and state
+/dev/xiaomi-fp u:object_r:vendor_fingerprint_device:s0
+/data/vendor/(fpdata|fpdump|fingerprint)(/.*)? u:object_r:vendor_fingerprint_data_file:s0

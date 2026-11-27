@@ -22,3 +22,7 @@ vendor.sys.fp                                   u:object_r:vendor_fp_prop:s0
 
 # Market name
 ro.odm.product.marketname                       u:object_r:vendor_marketname_prop:s0 exact string
+
+# Mist fingerprint service
+vendor.fps_hal. u:object_r:vendor_fp_prop:s0 prefix string
+vendor.fp.dummy.dfs u:object_r:vendor_fp_prop:s0 exact string

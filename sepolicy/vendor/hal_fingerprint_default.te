@@ -26,3 +26,6 @@ r_dir_file(vendor_hal_perf_default, hal_fingerprint_default)
 
 # Goodix HAL gets finger events from gf_spi over netlink
 allow hal_fingerprint_default self:netlink_socket create_socket_perms_no_ioctl;
+
+# Mist fingerprint service uses a named local socket and scheduling priority.
+allow hal_fingerprint_default self:unix_stream_socket create_stream_socket_perms;
