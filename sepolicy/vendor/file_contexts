@@ -23,3 +23,6 @@
 # Persistent fingerprint calibration
 /mnt/vendor/persist/(fingerprint|fpc|goodix)(/.*)? u:object_r:vendor_mist_fp_persist_file:s0
 /dev/socket/fpsensor_socket u:object_r:vendor_mist_fp_socket:s0
+
+# GKI loader uses the existing Qualcomm module-install domain.
+/vendor/bin/system_dlkm_modprobe\.sh u:object_r:vendor_modinstall-sh_exec:s0
