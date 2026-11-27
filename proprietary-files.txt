@@ -559,7 +559,6 @@ vendor/lib64/libadsprpc.so
 vendor/lib64/libaodoptfeature.so
 vendor/lib64/libapengine.so
 vendor/lib64/libappclassifier.so
-vendor/lib64/libar-pal.so;DISABLE_DEPS
 vendor/lib64/libaudio_aidl_conversion_common_ndk.so:vendor/lib64/libaudio_aidl_conversion_common_ndk_prebuilt.so;DISABLE_DEPS;FIX_SONAME
 vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libaudiocloudctrl.so
