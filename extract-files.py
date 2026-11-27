@@ -18,6 +18,10 @@ module = ExtractUtilsModule(
         'vendor/qcom/opensource/dataservices',
     ],
     blob_fixups={
+        'vendor/lib64/camera/components/com.qti.node.dewarp.so': blob_fixup()
+            .remove_needed('android.hardware.graphics.allocator-V1-ndk.so'),
+        'vendor/lib64/hw/com.qti.chi.override.so': blob_fixup()
+            .remove_needed('android.hardware.graphics.allocator-V1-ndk.so'),
         'vendor/lib64/libcamximageformatutils.so': blob_fixup()
             .remove_needed('android.hardware.graphics.allocator-V1-ndk.so'),
         'vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so': blob_fixup()
