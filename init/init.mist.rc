@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Mist firmware mount aliases and hardware service data directories.
 on early-init
+    setprop vendor.mist.charger_dsp_requested 0
     setprop vendor.mist.dsp_requested 0
     write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
     exec_start gki.modprobe
@@ -118,3 +119,25 @@ on boot
 on property:sys.boot_completed=1
     chown system system /sys/class/qcom-battery/input_suspend
     chmod 0660 /sys/class/qcom-battery/input_suspend
+
+# Charger-only boot bypasses normal fs/early-boot stages. Reuse the stock
+# modem-only charger fstab. Keep CDSP off in charger mode.
+on charger
+    wait /dev/block/platform/soc/${ro.boot.bootdevice} 10
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    mount_all /vendor/etc/charger_fw_fstab.qti --early
+    setprop vendor.mist.charger_fw_ready 1
+
+on charger && property:vendor.all.modules.ready=1
+    trigger mist-start-charger-adsp
+
+on property:vendor.mist.charger_fw_ready=1 && property:vendor.all.modules.ready=1 && property:vendor.mist.charger_dsp_requested=0
+    trigger mist-start-charger-adsp
+
+on mist-start-charger-adsp && property:vendor.mist.charger_fw_ready=1 && property:vendor.mist.charger_dsp_requested=0
+    setprop vendor.mist.charger_dsp_requested 1
+    exec_background u:r:vendor_qti_init_shell_bg:s0 -- /vendor/bin/init.qti.write.sh /sys/kernel/boot_adsp/boot 1
+
+# Android can transition from charger mode to normal boot without rebooting.
+on late-init
+    setprop vendor.mist.charger_fw_ready 0

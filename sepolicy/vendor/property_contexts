@@ -30,3 +30,5 @@ vendor.fp.dummy.dfs u:object_r:vendor_fp_prop:s0 exact string
 # Normal boot DSP coordination
 vendor.mist.normal_boot_ready u:object_r:vendor_mist_boot_prop:s0 exact bool
 vendor.mist.dsp_requested u:object_r:vendor_mist_boot_prop:s0 exact bool
+vendor.mist.charger_fw_ready u:object_r:vendor_mist_boot_prop:s0 exact bool
+vendor.mist.charger_dsp_requested u:object_r:vendor_mist_boot_prop:s0 exact bool
