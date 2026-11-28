@@ -17,12 +17,3 @@ install_symlink {
     installed_location: "firmware/wlan/qca_cld/adrastea/WCNSS_qcom_cfg.ini",
     symlink_target: "/vendor/etc/wifi/adrastea/WCNSS_qcom_cfg.ini",
 }
-
-// ANC blob needs the legacy ION close contract only.
-cc_library_shared {
-    name: "libmist_ion_compat",
-    vendor: true,
-    compile_multilib: "64",
-    srcs: ["compat/ion_close.c"],
-    cflags: ["-Wall", "-Werror"],
-}
