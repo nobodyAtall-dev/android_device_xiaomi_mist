@@ -18,6 +18,11 @@ module = ExtractUtilsModule(
         'vendor/qcom/opensource/dataservices',
     ],
     blob_fixups={
+        # Preserve stock implicit root UID explicitly for Android 17 init verification.
+        'vendor/etc/init/qms.rc': blob_fixup()
+            .regex_replace(r'(?m)^(service vendor\.qms[^\n]*\n[ \t]+class main\n)(?![ \t]+user[ \t])', r'\1     user root\n'),
+        'vendor/etc/init/vendor.dpmd.rc': blob_fixup()
+            .regex_replace(r'(?m)^(service vendor\.dpmd[^\n]*\n[ \t]+class late_start\n)(?![ \t]+user[ \t])', r'\1    user root\n'),
         'vendor/lib64/camera/components/com.qti.node.dewarp.so': blob_fixup()
             .remove_needed('android.hardware.graphics.allocator-V1-ndk.so'),
         'vendor/lib64/hw/com.qti.chi.override.so': blob_fixup()
