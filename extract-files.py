@@ -18,6 +18,8 @@ module = ExtractUtilsModule(
         'vendor/qcom/opensource/dataservices',
     ],
     blob_fixups={
+        'vendor/lib64/hw/anc.hal.so': blob_fixup()
+            .add_needed('libmist_ion_compat.so'),
         # Android 17 LLNDK stubs are unversioned; runtime exports were verified.
         'vendor/lib64/libarcsoft_beautyshot.so': blob_fixup()
             .clear_symbol_version('AHardwareBuffer_allocate')
