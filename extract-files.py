@@ -18,6 +18,20 @@ module = ExtractUtilsModule(
         'vendor/qcom/opensource/dataservices',
     ],
     blob_fixups={
+        # Android 17 LLNDK stubs are unversioned; runtime exports were verified.
+        'vendor/lib64/libarcsoft_beautyshot.so': blob_fixup()
+            .clear_symbol_version('AHardwareBuffer_allocate')
+            .clear_symbol_version('AHardwareBuffer_describe')
+            .clear_symbol_version('AHardwareBuffer_lock')
+            .clear_symbol_version('AHardwareBuffer_release')
+            .clear_symbol_version('AHardwareBuffer_unlock'),
+        'vendor/lib64/libMiPhotoFilter.so': blob_fixup()
+            .clear_symbol_version('AHardwareBuffer_allocate')
+            .clear_symbol_version('AHardwareBuffer_describe')
+            .clear_symbol_version('AHardwareBuffer_isSupported')
+            .clear_symbol_version('AHardwareBuffer_lockPlanes')
+            .clear_symbol_version('AHardwareBuffer_release')
+            .clear_symbol_version('AHardwareBuffer_unlock'),
         # Preserve stock implicit root UID explicitly for Android 17 init verification.
         'vendor/etc/init/qms.rc': blob_fixup()
             .regex_replace(r'(?m)^(service vendor\.qms[^\n]*\n[ \t]+class main\n)(?![ \t]+user[ \t])', r'\1     user root\n'),
