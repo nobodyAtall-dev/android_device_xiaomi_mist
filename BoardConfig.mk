@@ -116,6 +116,9 @@ WIFI_DRIVER_STATE_ON := "ON"
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
+# Restore upstream legacy ION-backed DMA-BUF support for stock vendor blobs.
+$(call soong_config_set_bool,libion,legacy_impl,true)
+
 # Qualcomm audio (Ravelin platform).
 AUDIO_FEATURE_ENABLED_DLKM := true
 AUDIO_FEATURE_ENABLED_GKI := true
