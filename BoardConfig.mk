@@ -85,6 +85,8 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/init/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_AVB_ENABLE := true
+# Development boot diagnostic: match Ravelin and Garnet AVB flags.
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 # Match stock Mist's chained boot AVB layout (rollback location 3).
 BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
